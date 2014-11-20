@@ -72,12 +72,22 @@ public class ButtonPartial extends HBox implements EventHandler<ActionEvent>
             Platform.exit();
         else if(t.getSource().equals(saveButton))
         {
+            UserInfo temp = partial.getUserInfo();
+            userInfo.add(temp);
+            partial.clearFields();
             
             System.out.println("Tallennus...");
         }
         else
         {
-            
+            for(UserInfo temp : userInfo)
+            {
+                 users.setText(users.getText() + 
+                               "Nimi: " + temp.getName() + "\n" + 
+                               "Osoite: " + temp.getAddress() + "\n" + 
+                               "Puhelin: " + temp.getPhone() + "\n\n"); 
+
+            }
         }
             
     }

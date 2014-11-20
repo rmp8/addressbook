@@ -35,4 +35,20 @@ public class TextFieldsPartial extends VBox
         this.getChildren().add(phoneLabel);
         this.getChildren().add(phoneField);
     }
+    
+    public UserInfo getUserInfo()
+    {
+        UserInfo info = new UserInfo();
+        info.setName(nameField.getText());
+        info.setAddress(addressField.getText());
+        info.setPhone(phoneField.getText());
+        return info;
+    }
+    
+    public void clearFields()
+    {
+        nameField.clear();
+        addressField.clear();
+        phoneField.clear();
+    }
 }
