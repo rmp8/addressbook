@@ -7,6 +7,8 @@ package addressbook;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,15 +23,24 @@ public class Addressbook extends Application
     public void start(Stage primaryStage)
     {
         // root is the main layout
-        VBox root = new VBox();
+        HBox root = new HBox();
+        VBox leftLayout = new VBox();
         
-        root.getChildren().add(new TextFieldsPartial());
-        root.getChildren().add(new ButtonPartial());
+        TextArea users = new TextArea();
+        users.setStyle("-fx-max-width:140;-fx-max-height:230;-fx-spacing:10");
+        TextFieldsPartial partial = new TextFieldsPartial();
+        leftLayout.getChildren().add(partial);
+        leftLayout.getChildren().add(new ButtonPartial(users,partial));
         
+        
+        root.getChildren().add(leftLayout);
+        root.getChildren().add(users);
+        
+        //users.setStyle("-fx-spacing:5;-fx-padding:5");
         //textFieldLayout.setStyle("-fx-spacing:10;-fx-padding:10");
         //buttonLayout.setStyle("-fx-spacing:10;-fx-padding:10");
         
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 320, 250);
         
         primaryStage.setTitle("Idea");
         primaryStage.setScene(scene);
